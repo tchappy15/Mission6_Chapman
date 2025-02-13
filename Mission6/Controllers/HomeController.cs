@@ -36,7 +36,7 @@ namespace Mission6.Controllers
             _context.SaveChanges(); //save or commit the changes
 
 
-            return View("Confirmation");
+            return View("Confirmation"); //take user to confirmation page
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Mission6.Models
     {
         //this will becomes a table with our various fields in it
 
-        //	Category	Title	Year	Director	Rating	Edited	Lent To:	Notes
+        //Column names:	Category	Title	Year	Director	Rating	Edited	Lent To:	Notes
 
         [Key]
         [Required]
@@ -27,6 +27,7 @@ namespace Mission6.Models
         [Required(ErrorMessage = "Rating is required.")]
         public string Rating { get; set; }
 
+        //these last 3 are not required, so they are nullable
         public bool? Edited { get; set; }
 
         public string? Lent_To { get; set; }
