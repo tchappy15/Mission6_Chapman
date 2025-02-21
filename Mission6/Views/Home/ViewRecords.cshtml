@@ -1,0 +1,51 @@
+﻿@model List<Movie>
+@*we are receiving a list of movie objects from the home controller when this page is pulled up *@
+
+<table class="table table-bordered table-striped table-hover table-sm">
+	<thead class="table-dark">
+		@* put the row names in the header 
+			Category	Title	Year	Director	Rating	Edited	Lent To Copied to Plex	Notes
+		*@
+		<tr>
+			<td>Category</td>
+			<td>Title</td>
+			<td>Year</td>
+			<td>Director</td>
+			<td>Rating</td>
+			<td>Edited</td>
+			<td>Lent To</td>
+			<td>Copied to Plex</td>
+			<td>Notes</td>
+			<td>Actions</td>
+
+		</tr>
+
+	</thead>
+
+	@foreach (var x in Model) @*Capital M Model means we are referring to the instance of the model that is coming through*@
+	{
+		<tbody>
+			<tr>
+				<td>@x.Category.CategoryName</td>
+				<td>@x.Title</td>
+				<td>@x.Year</td>
+				<td>@x.Director</td>
+				<td>@x.Rating</td>
+				<td>@x.Edited</td>
+				<td>@x.LentTo</td>
+				<td>@x.CopiedToPlex</td>
+				<td>@x.Notes</td>
+
+				<td>
+					@*This is where that MapControllerRoute pattern from our Program.cs file comes into play (in this asp-route-id tag helper)*@
+					<a class="btn btn-info btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
+					<a class="btn btn-danger btn-sm ml-2" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a>
+				</td>
+
+			</tr>
+
+		</tbody>
+	}
+
+
+</table>

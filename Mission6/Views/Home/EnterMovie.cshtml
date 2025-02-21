@@ -1,4 +1,4 @@
-﻿@model Application
+﻿@model Movie
 @{
     ViewData["Title"] = "Enter New Movie";
 }
@@ -8,11 +8,19 @@
 <form method="post">
 
     @* Column names: Category	Title	Year	Director	Rating	Edited	Lent To:	Notes *@
-
-    <label asp-for="Category">Category:</label> @*put the asp-for on both so the user clicking either will activate the box:) *@
-    <input asp-for="Category" />
+    
+    <input type="hidden" asp-for="MovieId"/>
+    
+    <label asp-for="CategoryId">Category:</label>
+    <select asp-for="CategoryId"> 
+        <option value="">Select a Category</option>
+        @foreach (Category category in ViewBag.Categories)
+        {
+            <option value="@category.CategoryId">@category.CategoryName</option>
+        }
+    </select>
     @*the asp-for tag helpers link the model to the form*@
-    <span asp-validation-for="Category" class="text-danger"></span> <!-- Shows error message -->
+    <span asp-validation-for="CategoryId" class="text-danger"></span> <!-- Shows error message -->
 
     <br />
     <br />
@@ -41,6 +49,13 @@
         <option value="PG">PG</option>
         <option value="PG-13">PG-13</option>
         <option value="R">R</option>
+        <option value="TV-Y7">TV-Y7</option>
+        <option value="TV-G">TV-G</option>
+        <option value="TV-PG">TV-PG</option>
+        <option value="TV-14">TV-14</option>
+        <option value="NR">NR</option>
+        <option value="UR">UR</option>
+
     </select>
     <span asp-validation-for="Rating" class="text-danger"></span> <!-- Shows error message -->
 
@@ -49,15 +64,23 @@
 
     <label asp-for="Edited">Edited:</label>
     <select asp-for="Edited">
-        <option value="true">Yes</option>
-        <option value="false">No</option>
-
+        <option value="1">Yes</option>
+        <option value="0">No</option>
     </select>
     <br />
     <br />
 
-    <label asp-for="Lent_To">Lent To:</label>
-    <input asp-for="Lent_To" />
+    <label asp-for="LentTo">Lent To:</label>
+    <input asp-for="LentTo" />
+    <br />
+    <br />
+
+    <label asp-for="CopiedToPlex">CopiedToPlex:</label>
+    <select asp-for="CopiedToPlex">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+    <span asp-validation-for="CopiedToPlex" class="text-danger"></span> <!-- Shows error message -->
     <br />
     <br />
 

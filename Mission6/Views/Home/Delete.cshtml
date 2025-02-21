@@ -1,0 +1,12 @@
+﻿@model Movie
+
+<h2>Confirm Deletion</h2>
+<h3>@Model.Title (@Model.Year)</h3>
+
+<form method="post">
+
+	<input type="hidden" asp-for="MovieId" /> @*to keep track of which record we are deleting*@
+
+	<button type="submit" class="btn btn-danger btn-sm">Delete</button>
+	<a class="btn btn-info btn-sm" asp-controller="Home" asp-action="ViewRecords">Cancel</a>
+</form>

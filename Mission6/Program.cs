@@ -1,14 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using Mission6.Models;
+using Mission6_Chapman.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<JoelHiltonContext>(options =>
+builder.Services.AddDbContext<JoelHiltonMovieCollectionContext>(options =>
 {
-    options.UseSqlite(builder.Configuration["ConnectionStrings:SQLiteConnection"]);
+    options.UseSqlite(builder.Configuration.GetConnectionString("SQLiteConnection"));
 });
 
 var app = builder.Build();
